@@ -1,0 +1,25 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+  width: 400px;
+  background-color: green;
+}
+
+.grid div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  font-size: 2em;
+  text-align: center;
+  font-weight: bold;
+  color: beige;
+}
