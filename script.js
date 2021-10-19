@@ -10,18 +10,26 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     function createBoard() {
      for (let i = 0; i < widths * widths; i++) {
-            square = document.createElement('div')
+           let square = document.createElement('div')
             square.innerHTML = 0
             gridDisplay.appendChild(square)
            squares.push(square)
-        
-        
-        
         }
+        generateNumber()
+        generateNumber()
     }
-
     createBoard()
 
+
+    
+    // random number generator
+    function generateNumber(){
+       let randomNumber = Math.floor(Math.random() * squares.length)
+       if(squares[randomNumber].innerHTML == 0) {
+           squares[randomNumber].innerHTML = 2
+       } else
+           generateNumber()
+    }
 
 
 
