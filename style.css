@@ -11,15 +11,15 @@
   flex-wrap: wrap;
   height: 400px;
   width: 400px;
-  background-color: green;
+  background-color: #042069;
 }
 
 .grid div {
   width: 100px;
   height: 100px;
-  background-color: red;
+  background-color: #420a55;
   font-size: 2em;
   text-align: center;
   font-weight: bold;
-  color: beige;
+  color: #b00b69;
 }

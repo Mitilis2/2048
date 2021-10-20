@@ -20,8 +20,6 @@ document.addEventListener('DOMContentLoaded', () =>{
     }
     createBoard()
 
-
-    
     // random number generator
     function generateNumber(){
        let randomNumber = Math.floor(Math.random() * squares.length)
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () =>{
        } else
            generateNumber()
     }
-
     //  swipe right
 
     function rightSwipe(){
@@ -40,21 +37,11 @@ document.addEventListener('DOMContentLoaded', () =>{
                 let totalTwo = squares[i+1].innerHTML
                 let totalThree = squares[i+2].innerHTML
                 let totalFour = squares[i+3].innerHTML
-
                 let row =  [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
-                
-                console.log(row)
-
                 let filteredRow = row.filter(num => num)
-                console.log(filteredRow)
-
                 let missingElement = 4 - filteredRow.length
-
                 let zeros = Array(missingElement).fill(0)
-                console.log(zeros)            
                 let newRow = zeros.concat(filteredRow)
-                console.log(newRow)
-
 
                 squares[i].innerHTML = newRow[0]
                 squares[i+1].innerHTML = newRow[1]
@@ -75,20 +62,11 @@ function leftSwipe(){
             let totalTwo = squares[i+1].innerHTML
             let totalThree = squares[i+2].innerHTML
             let totalFour = squares[i+3].innerHTML
-
             let row =  [parseInt(totalOne), parseInt(totalTwo), parseInt(totalThree), parseInt(totalFour)]
-            
-            console.log(row)
-
             let filteredRow = row.filter(num => num)
-            console.log(filteredRow)
-
             let missingElement = 4 - filteredRow.length
-
             let zeros = Array(missingElement).fill(0)
-            console.log(zeros)            
             let newRow = filteredRow.concat(zeros)
-            console.log(newRow)
 
 
             squares[i].innerHTML = newRow[0]
@@ -99,6 +77,49 @@ function leftSwipe(){
         }
     }
 }
+
+    function combineRowNumbers(){
+        for(let i = 0; i < 15; i++){
+            if(squares[i].innerHTML === squares[i+1].innerHTML){
+                let combinedTotal = parseInt(squares[i].innerHTML) + parseInt(squares[i+1].innerHTML)
+                squares[i].innerHTML = combinedTotal
+                squares[i+1].innerHTML = 0
+            }
+        }
+    }
+
+    // keyboard functionality
+
+    function control(e){
+        if(e.keyCode === 39){
+            keyRight()
+        } else if(e.keyCode === 37){
+            keyLeft()
+        }
+    }
+    document.addEventListener('keyup', control)
+
+function keyRight(){
+    rightSwipe()
+    combineRowNumbers()
+    rightSwipe()
+    generateNumber()
+}
+ 
+function keyLeft(){
+    leftSwipe()
+    combineRowNumbers()
+    leftSwipe()
+    generateNumber()
+}
+ 
+
+
+
+
+
+
+
 
 
 
